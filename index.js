@@ -1,7 +1,14 @@
 var express = require('express');
-const cors = require("cors");
+//const cors = require("cors");
 var app = express();
-app.use(cors());
+//app.use(cors());
+
+app.use( (request, response, next) => {
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get('/', function (req, res) {
     res.status(200).send('OK')
 });
